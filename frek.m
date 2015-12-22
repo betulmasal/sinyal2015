@@ -1,5 +1,25 @@
-function [f]=frek(n,o) %frekans hesaplamasý yapar
-N={'Do','C#','Re','Eb','Mi','Fa','F#','Sol','G#','La','Bb','Si'}; %string bir yapý oluþturuldu
-a=strcmp(N,n); %string yapýda gönderilen nota aratýlýp deðer 1 olarak döndüren bir int dizi oluþturuldu
-m=find(a,1);% oluþturulan int dizide 1 olan deðerin indeksi döndürüldü
-f=floor(16.35*(2^o)*(2^((m-1)/12))); % diziler 1 den baþlatýldýðý için m-1 hesaplmasý yapýldý ve yuvalarma yapýlarak frekans hesaplandý
+  function [frekans]=frek(nota,oktav)                                         %Girilen nota ve oktava göre frekans döndürülüyor. 
+notalar={'Do','C#','Re','Eb','Mi','Fa','F#','Sol','G#','La','Bb','Si'};     %Notalarýmýz bir dizi içerisinde yazýldý. 
+ n=strcmp(notalar,nota);                                                     %Fonksiyona gönderdiðimiz notayý dizi içerisinde aratýr ve buduðu indekse 1 atar 
+ m=find(n,1);                                                                %n dizisinde 1 deðerinin indeksini döndürür. 
+ 
+ 
+ 
+ 
+ if (nargin==0) 
+       disp ('Lütfen veri giriþi yapýnýz: ') 
+   else if (nargin==1) 
+         if(m==13) 
+             frekans=0; 
+        else 
+           frekans=floor(16.35*(2^4)*(2^((m-1)/12)));                       % Frekans fonksiyonu oluþturuldu.  
+            
+         end 
+     else  
+         if (m==13)  
+            frekans=0; 
+         else frekans=floor(16.35*(2^oktav)*(2^((m-1)/12)));                 % Frekans fonksiyonu oluþturuldu. 
+        end 
+         
+     end 
+ end                                                                         %sayýyý en yakýn deðere yuvarladýk yuvarlama kodu. 
